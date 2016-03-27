@@ -1,0 +1,27 @@
+{
+  "name": "oss-visualization",
+  "version": "1.0.0",
+  "description": "Visualization of Open Source Projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://DrkSephy@bitbucket.org/DrkSephy/oss-dataviz.git"
+  },
+  "keywords": [
+    "open",
+    "source",
+    "visualization"
+  ],
+  "author": "David Leonard, Liron Shimrony",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://bitbucket.org/DrkSephy/oss-dataviz/issues"
+  },
+  "homepage": "https://bitbucket.org/DrkSephy/oss-dataviz/overview",
+  "dependencies": {
+    "request": "^2.69.0"
+  }
+}
