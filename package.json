@@ -8,19 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DrkSephy/oss-visualization.git"
+    "url": "https://DrkSephy@bitbucket.org/DrkSephy/oss-dataviz.git"
   },
   "keywords": [
     "open",
     "source",
     "visualization"
   ],
-  "author": "David Leonard",
+  "author": "David Leonard, Liron Shimrony",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DrkSephy/oss-visualization/issues"
+    "url": "https://bitbucket.org/DrkSephy/oss-dataviz/issues"
   },
-  "homepage": "https://github.com/DrkSephy/oss-visualization",
+  "homepage": "https://bitbucket.org/DrkSephy/oss-dataviz/overview",
   "dependencies": {
     "request": "^2.69.0"
   }
