@@ -1,0 +1,27 @@
+{
+  "name": "oss-visualization",
+  "version": "1.0.0",
+  "description": "Visualization of Open Source Projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DrkSephy/oss-visualization.git"
+  },
+  "keywords": [
+    "open",
+    "source",
+    "visualization"
+  ],
+  "author": "David Leonard",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DrkSephy/oss-visualization/issues"
+  },
+  "homepage": "https://github.com/DrkSephy/oss-visualization",
+  "dependencies": {
+    "request": "^2.69.0"
+  }
+}
