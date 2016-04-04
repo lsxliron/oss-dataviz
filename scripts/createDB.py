@@ -123,7 +123,7 @@ def getDataForDay(df, outFilename):
                     events[row['repo']['name']][row['type']] += 1
 
     # Save results as json
-    json.dump(events, open(filename,'w'))
+    json.dump(events, open(outFilename,'w'))
         
 
 
