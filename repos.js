@@ -1,5 +1,7 @@
 'use strict';
 
+var fs = require('fs');
+
 /**
  * Gathers all Facebook repositories.
 */
@@ -25,8 +27,13 @@ Promise.all(promises)
 .then((results) => {
   results.forEach((result) => {
     result.forEach((item) => {
-      repositories.push(item.full_name);
+      var repo = {}
+      repo[item.full_name] = {}
+      repo[item.full_name]['language'] = item.language;
+      repositories.push(repo);
     });
   });
-  console.log(repositories);
+  fs.writeFile('repoLanguages.json', JSON.stringify(repositories), (err) => {
+    if (err) return console.log(err);
+  });
 });
