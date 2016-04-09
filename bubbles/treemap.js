@@ -21,7 +21,7 @@ function plot(){
               .style("top", margin.top + "px");
 
 
-  d3.json("test.json", function(error, root){
+  d3.json("treemapData.json", function(error, root){
     if (error) throw error;
 
     var node = div.datum(root).selectAll(".node")
@@ -33,12 +33,13 @@ function plot(){
                   .text(function(d) { return d.children ? null : d.name; })
                   .on('mouseover', function(){
                     d3.select(this).transition().duration(500)
+                      .style('z-index','100')
                       .style('width', function(d){ return d.dx*4 + 'px'; })
                       .style('height', function(d){ return d.dy*2 + 'px'; })
                       .style('left', function(d){ return d.x - d.dx/2 + 'px'; })
                       .style('top', function(d){ return d.y - d.dy/2 + 'px'; })
                       .style('background-color',function(d){return 'red'})
-                      .style('z-index','100')
+                      
                   })
 
                   .on('mouseout', function(){
@@ -53,9 +54,18 @@ function plot(){
 
 
     d3.selectAll('input').on('change', function change(){
-      var value = this.value === "count"
-          ? function(d){console.log(d);return 1}
-          : function(d){return d.ForkEvent + 50}
+      // var value = this.value === "Forks"
+      var value;
+      if (this.value == "Forks")
+           value = function(d){return d.ForkEvent + 100}
+      else if (this.value == "Stars")
+            value =  function(d){return d.WatchEvent + 100}
+      else if (this.value == "Pulls")
+            value =  function(d){return d.PullRequestEvent + 100}
+      else if (this.value == "IssueCommentEvent")
+            value =  function(d){return d.IssueCommentEvent + 100}
+      else if (this.value == "PushEvent")
+            value =  function(d){return d.PushEvent + 100}
 
       node.data(treemap.value(value).nodes)
           .transition().duration(1500)
