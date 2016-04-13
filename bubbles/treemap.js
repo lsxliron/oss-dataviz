@@ -6,7 +6,6 @@ function plot(){
     height = 500 - margin.top - margin.bottom;
 
   var color = d3.scale.category20c();
-
   var treemap = d3.layout.treemap()
                   .size([width, height])
                   .sticky(true)
@@ -31,25 +30,33 @@ function plot(){
                   .call(position)
                   .style("background", function(d) { return d.children ? color(d.name) : null; })
                   .text(function(d) { return d.children ? null : d.name; })
-                  .on('mouseover', function(){
+                  .on('mouseenter', function(){
+                    d3.select(this).append('tspan').html(function(d){return getRepoData(d)})
+                    d3.select(this).style('background-color',function(d){return color(d.parent.name)}).style('z-index','100')
                     d3.select(this).transition().duration(500)
-                      .style('z-index','100')
-                      .style('width', function(d){ return d.dx*4 + 'px'; })
-                      .style('height', function(d){ return d.dy*2 + 'px'; })
+                      
+                      .style('width', function(d){ return d.dx*3.2 + 'px'; })
+                      .style('height', function(d){ return d.dy*2.8 + 'px'; })
                       .style('left', function(d){ return d.x - d.dx/2 + 'px'; })
                       .style('top', function(d){ return d.y - d.dy/2 + 'px'; })
-                      .style('background-color',function(d){return 'red'})
                       
                   })
 
-                  .on('mouseout', function(){
+                    
+                  
+                  
+                  
+
+                  .on('mouseleave', function(){
+                    d3.select(this).style('background-color',function(d){return null}).style('z-index','0')
                     d3.select(this).transition().duration(500)
                       .style('width', function(d){ return d.dx + 'px'; })
                       .style('height', function(d){ return d.dy + 'px'; })
                       .style('left', function(d){ return d.x + 'px'; })
                       .style('top', function(d){ return d.y + 'px'; })
-                      .style('background-color',function(d){return null})
-                      .style('z-index','0')
+                      
+                      
+                    d3.select(this).select('tspan').remove()
                   })
 
 
@@ -67,6 +74,16 @@ function plot(){
       else if (this.value == "PushEvent")
             value =  function(d){return d.PushEvent + 100}
 
+      // if (this.value == "Forks")
+      //      value = function(d){return d.ForkEvent}
+      // else if (this.value == "Stars")
+      //       value =  function(d){return d.WatchEvent}
+      // else if (this.value == "Pulls")
+      //       value =  function(d){return d.PullRequestEvent}
+      // else if (this.value == "IssueCommentEvent")
+      //       value =  function(d){return d.IssueCommentEvent}
+      // else if (this.value == "PushEvent")
+      //       value =  function(d){return d.PushEvent}
       node.data(treemap.value(value).nodes)
           .transition().duration(1500)
           .call(position)
@@ -82,6 +99,16 @@ function position(){
 
 }
 
+function getRepoData(d){
+  // return d.name + "<tspan>" + "Stars: " + d.WatchEvent 
+  return d.name + "<br>" + 
+        "Stars: " + d.WatchEvent + "<br>" + 
+        "Forks: " + d.ForkEvent + "<br>" + 
+        "Pulls: "  + d.PullRequestEvent + "<br>" +
+        "Issues Comments: " + d.IssueCommentEvent + "<br>" +
+        "Push Events: " + d.IssueCommentEvent + "<br>";
+
+}
 
 // {
 //   "name" : "repos",
