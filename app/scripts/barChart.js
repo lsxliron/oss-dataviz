@@ -1,30 +1,22 @@
 function plotBarChart(repoData){
 
 
-  var dataFile;
-  if (repoData == null)
-    dataFile = 'data/fbTotal.json';
-  else
-    dataFile = repoData
+  
+  
+  var dataFile = 'data/fbTotal.json';
+  
+  
 
   d3.json(dataFile, function(err, data) {
-    if (err){
-      data=dataFile
-    }
-    console.log(data)
 
     var max = d3.max(data, function(d) { return d.count });
     var min = d3.min(data, function(d) { return d.count });
 
-    // var linScale = d3.scale.log()
-    //   .domain([min, max])
-    //   .range([250, 700]);
-
     var categories= ['', 'CommitCommentEvent', 'ForkEvent', 'WatchEvent', 'PullRequestEvent', 'PullRequestReviewCommentEvent', 'IssuesEvent', 'IssueCommentEvent',  'PushEvent'];
-
-    var xscale = d3.scale.log()
+    
+    var xscale = d3.scale.linear()
             .domain([min, max])
-            .range([100, 380]);
+            .range([100, 350]);
 
     var yscale = d3.scale.linear()
             .domain([0,categories.length])
@@ -63,7 +55,7 @@ function plotBarChart(repoData){
                 .data(data)
                 .transition()
                 .duration(1000)
-                .attr('width', function(d) {return xscale(d.count); })
+                .attr('width', function(d) { return xscale(d.count); })
 
     var transitext = d3.select('#bars')
               .selectAll('text')
@@ -74,5 +66,45 @@ function plotBarChart(repoData){
               .text(function(d) { return d.count })
               .style({'fill':'#fff','font-size':'16px'});
   });
+
+}
+
+function updateBarChart(data){
+  
+  var categories= ['', 'CommitCommentEvent', 'ForkEvent', 'WatchEvent', 'PullRequestEvent', 'PullRequestReviewCommentEvent', 'IssuesEvent', 'IssueCommentEvent',  'PushEvent'];
+  
+  var max = d3.max(data, function(d) { return d.count });
+  var min = d3.min(data, function(d) { return d.count });
+  
+  
+  var xscale = d3.scale.linear()
+            .domain([min, max])
+            .range([50, 350]);
+
+  var yscale = d3.scale.linear()
+            .domain([0,categories.length])
+            .range([0,240]);
+
+  var canvas = d3.select('.barChartDiv').select('svg')
+  
+  var chart = canvas.selectAll('rect').data(data)
+                    .attr('height',19)
+                    .attr({'x':0,'y':function(d,i){ return yscale(i) + 15; }})
+                    .transition().duration(1000)
+                    .attr('width',function(d){ return xscale(d.count); })
+                    
+
+  var transitext = d3.select('#bars')
+                    .selectAll('text')
+                    .data(data)
+                    .text(function(d) { return d.count })
+                    .transition().duration(1000)
+                    .attr({'x':function(d) {
+                      var numStr = d.count.toString().length
+                      return xscale(d.count)-10*numStr-10; 
+                    },'y':function(d,i){ return yscale(i) + 30; }})
+                    
+  
+
 
 }

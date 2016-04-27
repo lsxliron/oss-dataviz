@@ -47,6 +47,9 @@
           <input type="radio" name="mode" id="pulls" value="Pulls"> <label for="pulls">Pulls</label>
           <input type="radio" name="mode" id="IssueCommentEvent" value="IssueCommentEvent"> <label for="IssueCommentEvent">IssueCommentEvent</label>
           <input type="radio" name="mode" id="PushEvent" value="PushEvent"> <label for="PushEvent">PushEvent</label>
+          <!-- <label id='selectedRepo' style="float:right; font-size:15px">REPO</label> -->
+          <label id="selectedRepo" style="font-size:15px; margin-left:300px;">Selected repo:</label>
+
         </form>
       </div>
     </div>
@@ -55,6 +58,7 @@
       <div class="treemapDiv col l12">  
       </div>  
     </div>
+
     
   </div>
 </div>
@@ -76,7 +80,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
     plotTreemap()
-    plotBarChart(null)
+    plotBarChart()
   })
 </script>
 </body>
