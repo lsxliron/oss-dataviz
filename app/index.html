@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Facebook Digest</title>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
+  <script type="text/javascript" src="bower_components/Materialize/dist/js/materialize.min.js"></script>
+  <script type="text/javascript" src="scripts/treemap.js"></script>
+  <script type="text/javascript" src="scripts/barChart.js"></script>
+  <link rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css" />
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/treemap.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Facebook Digest</a>
+  </div>
+</nav>
+<!-- END NAVBAR -->
+
+
+<!-- CONTENT -->
+<div class="wrapper">
+  <div class="customContainer">
+    <div class="row">
+
+      <!-- BAR CHART -->
+      <div class="barChartDiv col l6">
+        
+      </div>
+      <!-- TIME SERIES -->
+      <div class="timeSeriesDiv col l6" style="background-color: #eee">
+        <h4>Time Series Here</h4>
+      </div>
+    </div>
+
+    <!-- TREE MAP -->
+    <div class="row">
+      <div class="col l12">
+        <form class="treemapForm">
+          <input type="radio" name="mode" id="stars" value="Stars" checked><label for="stars">Stars</label>
+          <input type="radio" name="mode" id="forks" value="Forks"> <label for="forks">Forks</label>
+          <input type="radio" name="mode" id="pulls" value="Pulls"> <label for="pulls">Pulls</label>
+          <input type="radio" name="mode" id="IssueCommentEvent" value="IssueCommentEvent"> <label for="IssueCommentEvent">IssueCommentEvent</label>
+          <input type="radio" name="mode" id="PushEvent" value="PushEvent"> <label for="PushEvent">PushEvent</label>
+        </form>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="treemapDiv col l12">  
+      </div>  
+    </div>
+    
+  </div>
+</div>
+
+
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  
+  <div class="footer-copyright">
+    <div class="container">
+      &copy; 2016 Created by Liron Shimrony and David Leonard        
+    </div>
+  </div>
+</footer>
+<!-- END FOOTER -->
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    plotTreemap()
+    plotBarChart(null)
+  })
+</script>
+</body>
+</html>
