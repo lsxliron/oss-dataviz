@@ -16,7 +16,7 @@ function plotBarChart(repoData){
     
     var xscale = d3.scale.linear()
             .domain([min, max])
-            .range([50, 350]);
+            .range([50, $(window).width()/5]);
 
     var yscale = d3.scale.linear()
             .domain([0,categories.length])
@@ -24,7 +24,7 @@ function plotBarChart(repoData){
 
     var canvas = d3.select('.barChartDiv')
             .append('svg')
-            .attr({'width':590,'height':275})
+            .attr({'width':$(window).width()/2,'height':275})
 
     var yAxis = d3.svg.axis();
       yAxis
@@ -82,7 +82,7 @@ function updateBarChart(data){
   
   var xscale = d3.scale.linear()
             .domain([min, max])
-            .range([50, 350]);
+            .range([50, $(window).width()/5]);
 
   var yscale = d3.scale.linear()
             .domain([0,categories.length])

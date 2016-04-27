@@ -1,7 +1,7 @@
 function plotTreemap(){
 
   var margin = {top: -20, right: 40, bottom: 10, left: 10},
-    width = 1260 - margin.left - margin.right,
+    width = $(window).width() - margin.left - margin.right,
     height = 200 - margin.top - margin.bottom;
 
   var color = d3.scale.category20c();
