@@ -1,0 +1,23 @@
+{
+  "name": "Facebook Digest",
+  "authors": [
+    "Liron Shimrony",
+    "David Leonard"
+  ],
+  "description": "A graphical view of Facebook repositories data for March 2016",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "visualization",
+    "facebook",
+    "repo",
+    "repositories"
+  ],
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/DrkSephy/oss-dataviz",
+  "private": true,
+  "dependencies": {
+    "jquery": "^2.2.3",
+    "d3": "^3.5.16"
+  }
+}
