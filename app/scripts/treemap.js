@@ -36,6 +36,9 @@ function plotTreemap(){
                   .on('mouseover', function(d){
                     $('#selectedRepo').text("Hovered reop: " + d.name)
                   })
+                  .on('mouseout', function(){
+                    $('#selectedRepo').text("Hovered repo: none")
+                  })
          
 
 

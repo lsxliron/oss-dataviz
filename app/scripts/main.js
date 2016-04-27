@@ -22,7 +22,6 @@ function getFBTotal(){
     success: function(data){
       updateBarChart(data)
       $('#selectedRepoTitle').text('Bar Chart: All Reporistories');
-      $('#selectedRepo').text('Hovered repo: none');
     }
   })
 }
