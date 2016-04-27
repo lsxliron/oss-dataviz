@@ -29,37 +29,14 @@ function plotTreemap(){
                   .call(position)
                   .style("background", function(d) { return d.children ? color(d.name) : null; })
                   .text(function(d) { return d.children ? null : d.name; })
-                  .on('click', function(d){ updateBarChart(getDataForBarChart(d)); })
+                  .on('click', function(d){ 
+                    updateBarChart(getDataForBarChart(d)); 
+                    $('#selectedRepoTitle').text("Bar Chart: " + d.name)
+                  })
                   .on('mouseover', function(d){
-                    $('#selectedRepo').text("Selected reop: " + d.name)
+                    $('#selectedRepo').text("Hovered reop: " + d.name)
                   })
-                  .on('mouseenter', function(){
-                    // d3.select(this).append('tspan').html(function(d){return getRepoData(d)})
-                    // d3.select(this).style('background-color',function(d){return color(d.parent.name)}).style('z-index','100')
-                    // d3.select(this).transition().duration(500)     
-                    //   .style('width', function(d){ return d.dx*3.2 + 'px'; })
-                    //   .style('height', function(d){ return d.dy*2.8 + 'px'; })
-                    //   .style('left', function(d){ return d.x - d.dx/2 + 'px'; })
-                    //   .style('top', function(d){ return d.y - d.dy/2 + 'px'; })
-                      
-                  })
-
-                    
-                  
-                  
-                  
-
-                  .on('mouseleave', function(){
-                    // d3.select(this).style('background-color',function(d){return null}).style('z-index','0')
-                    // d3.select(this).transition().duration(500)
-                    //   .style('width', function(d){ return d.dx + 'px'; })
-                    //   .style('height', function(d){ return d.dy + 'px'; })
-                    //   .style('left', function(d){ return d.x + 'px'; })
-                    //   .style('top', function(d){ return d.y + 'px'; })
-                      
-                      
-                    // d3.select(this).select('tspan').remove()
-                  })
+         
 
 
     d3.selectAll('input').on('change', function change(){

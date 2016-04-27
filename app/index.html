@@ -8,6 +8,7 @@
   <script type="text/javascript" src="scripts/treemap.js"></script>
   <script type="text/javascript" src="scripts/barChart.js"></script>
   <link rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="styles/treemap.css">
 </head>
@@ -17,7 +18,8 @@
 <!-- NAVBAR -->
 <nav>
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo">Facebook Digest</a>
+    <a  id="selectedRepoTitle" href="#">Bar Chart: All Reporistories</a>
+    <a href="#" class="brand-logo right">Facebook Digest</a>
   </div>
 </nav>
 <!-- END NAVBAR -->
@@ -42,13 +44,15 @@
     <div class="row">
       <div class="col l12">
         <form class="treemapForm">
+          <a id="refresh" href="#" style="margin-left:10px; margin-right:10px"><i id="loopIcon" class="small material-icons">loop</i></a>
           <input type="radio" name="mode" id="stars" value="Stars" checked><label for="stars">Stars</label>
           <input type="radio" name="mode" id="forks" value="Forks"> <label for="forks">Forks</label>
           <input type="radio" name="mode" id="pulls" value="Pulls"> <label for="pulls">Pulls</label>
           <input type="radio" name="mode" id="IssueCommentEvent" value="IssueCommentEvent"> <label for="IssueCommentEvent">IssueCommentEvent</label>
           <input type="radio" name="mode" id="PushEvent" value="PushEvent"> <label for="PushEvent">PushEvent</label>
+          
           <!-- <label id='selectedRepo' style="float:right; font-size:15px">REPO</label> -->
-          <label id="selectedRepo" style="font-size:15px; margin-left:300px;">Selected repo:</label>
+          <label id="selectedRepo">Hovered repo: none</label>
 
         </form>
       </div>
@@ -77,11 +81,7 @@
 <!-- END FOOTER -->
 
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    plotTreemap()
-    plotBarChart()
-  })
-</script>
+<script type="text/javascript" src="scripts/main.js"></script>
+
 </body>
 </html>

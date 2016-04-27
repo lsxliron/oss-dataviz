@@ -16,7 +16,7 @@ function plotBarChart(repoData){
     
     var xscale = d3.scale.linear()
             .domain([min, max])
-            .range([100, 350]);
+            .range([50, 350]);
 
     var yscale = d3.scale.linear()
             .domain([0,categories.length])
@@ -62,7 +62,10 @@ function plotBarChart(repoData){
               .data(data)
               .enter()
               .append('text')
-              .attr({'x':function(d) {return xscale(d.count)-65 },'y':function(d,i){ return yscale(i) + 30; }})
+              .attr({'x':function(d) {
+                var numStr = d.count.toString().length
+                return xscale(d.count)-10*numStr-10; 
+              },'y':function(d,i){ return yscale(i) + 30; }})
               .text(function(d) { return d.count })
               .style({'fill':'#fff','font-size':'16px'});
   });
