@@ -5,5 +5,7 @@
   overflow: hidden;
   position: absolute;
   text-indent: 2px; }
+  .node:hover {
+    background-color: deepPink; }
 
 /*# sourceMappingURL=treemap.css.map */

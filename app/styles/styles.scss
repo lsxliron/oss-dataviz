@@ -9,6 +9,36 @@
 }
 
 .wrapper{
-  // text-align: center;
   width:100%;
+}
+
+#selectedRepo{
+  font-size:15px; 
+  margin-left:300px;
+}
+
+#selectedRepoTitle{
+  font-size:20px;
+  margin-left:10px;
+}
+
+#refresh{
+  // transition: all 1s ease-in-out;
+  
+  // &>i{transition: all 1s ease-in-out;}
+  
+  &:link{color:#000;}
+  &:visited{color:#000;}
+  
+  // &:active>i{
+    // transform: rotate(360deg);
+    // transition: all 500ms ease-in;
+    
+    // -webkit-transform: rotate(45deg);
+    
+
+    
+    
+    // -o-transform: rotate(45deg);
+  // }
 }

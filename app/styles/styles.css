@@ -10,4 +10,17 @@
 .wrapper {
   width: 100%; }
 
+#selectedRepo {
+  font-size: 15px;
+  margin-left: 300px; }
+
+#selectedRepoTitle {
+  font-size: 20px;
+  margin-left: 10px; }
+
+#refresh:link {
+  color: #000; }
+#refresh:visited {
+  color: #000; }
+
 /*# sourceMappingURL=styles.css.map */
