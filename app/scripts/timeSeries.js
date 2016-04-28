@@ -9,19 +9,19 @@ function plotTimeSeries(){
 
   // Color hash will be used for coloring each line
   var color_hash = {  
-    0 : ['#ff6961'],
-    1 : ['#61a8ff'],
-    2 : ['#61ffb8'],
-    3 : ['#917394']
+    0 : ['#795548'],
+    1 : ['#0d47a1'],
+    2 : ['#00897b'],
+    3 : ['#ff6f00']
   } 
 
   // Used for creating the legend
   // Colors correspond to the line color order
   var legend_hash = {
-    0 : ['Commits', '#ff6961'],
-    1 : ['Pull Requests', '#61a8ff'],
-    2 : ['Pull Request Comments', '#61ffb8'],
-    3 : ['Issues', '#917394']
+    0 : ['Commits', '#795548'],
+    1 : ['Pull Requests', '#0d47a1'],
+    2 : ['Pull Request Comments', '#00897b'],
+    3 : ['Issues', '#ff6f00']
   }
 
   // Parse the date / time
@@ -104,6 +104,8 @@ function plotTimeSeries(){
       .attr('id', function (d) { return 'circle' + d.name.replace(/\s+/g, '')})
       .style('stroke', '#917394')
       .style('fill', '#ffffff' )
+      .on('mouseenter', function(){ d3.select(this).transition().duration(500).attr('r',8) })
+      .on('mouseleave', function(){ d3.select(this).transition().duration(500).attr('r',5) })
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
 
@@ -152,13 +154,6 @@ function plotTimeSeries(){
 }
 
 function updateTimeSeries(data){
-
-  var color_hash = {  
-    0 : ['#ff6961'],
-    1 : ['#61a8ff'],
-    2 : ['#61ffb8'],
-    3 : ['#917394']
-  } 
 
   // Parse the date / time
   var parseDate = d3.time.format('%b %d').parse; 
