@@ -193,7 +193,13 @@ function updateTimeSeries(data){
 
   // Scale dates and count values
   x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain([0, d3.max(data, function(d) { return d.count; })]);
+  y.domain([0, d3.max(data, function(d) { return d.count+5; })]);
+  
+  // console.log(y.domain()[1])
+  // if (y.domain()[1] == 1){
+  //   console.log("X")
+  //   y.domain([0,1])
+  // }
   
   
 
