@@ -7,7 +7,7 @@ function plotBarChart(repoData){
     var max = d3.max(data, function(d) { return d.count });
     var min = d3.min(data, function(d) { return d.count });
 
-    var categories= ['', 'Commit Comments', 'Forks', 'Stars', 'Pull Requests', 'Pull Requests Comments', 'Issues', 'Issue Commen',  'Commits'];
+    var categories= ['', 'Commit Comments', 'Forks', 'Stars', 'Pull Requests', 'Pull Request Comments', 'Issues', 'Issue Comments',  'Commits'];
     
     var xscale = d3.scale.linear()
             .domain([min, max])
@@ -69,7 +69,7 @@ function plotBarChart(repoData){
 
 function updateBarChart(data){
   
-  var categories= ['', 'Commit Comments', 'Forks', 'Stars', 'Pull Requests', 'Pull Requests Comments', 'Issues', 'Issue Commen',  'Commits'];
+  var categories= ['', 'Commit Comments', 'Forks', 'Stars', 'Pull Requests', 'Pull Request Comments', 'Issues', 'Issue Comments',  'Commits'];
   
   var max = d3.max(data, function(d) { return d.count });
   var min = d3.min(data, function(d) { return d.count });
