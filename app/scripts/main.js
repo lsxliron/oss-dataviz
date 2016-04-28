@@ -3,6 +3,7 @@ var angle;
 (function(){
   plotTreemap()
   plotBarChart()  
+  plotTimeSeries()
 
   $('#refresh').on('click', function(){
     var angleMatrix = $('#loopIcon').css('transform');
@@ -12,8 +13,19 @@ var angle;
       angle+=360;
     $("#loopIcon").css({'transform': 'rotate('+angle+'deg)', 'transition': 'all 500ms ease-in'})
     getFBTotal();
+    getTimeSeriesTotal();
   })
 })()
+
+function getTimeSeriesTotal(){
+  $.ajax({
+    dataType: 'json',
+    url: 'data/weekly.json',
+    success: function(data){
+      updateTimeSeries(data);
+    }
+  })
+}
 
 function getFBTotal(){
   $.ajax({

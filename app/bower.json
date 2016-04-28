@@ -19,6 +19,7 @@
   "dependencies": {
     "jquery": "^2.2.3",
     "d3": "^3.5.16",
-    "Materialize": "materialize#^0.97.6"
+    "Materialize": "materialize#^0.97.6",
+    "d3-tip": "^0.6.7"
   }
 }

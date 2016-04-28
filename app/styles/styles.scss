@@ -1,3 +1,6 @@
+@import 'treemap';
+@import 'timeSeries';
+@import 'barChart';
 .customContainer{
   position:relative;
   width: 98%;
@@ -23,22 +26,6 @@
 }
 
 #refresh{
-  // transition: all 1s ease-in-out;
-  
-  // &>i{transition: all 1s ease-in-out;}
-  
   &:link{color:#000;}
   &:visited{color:#000;}
-  
-  // &:active>i{
-    // transform: rotate(360deg);
-    // transition: all 500ms ease-in;
-    
-    // -webkit-transform: rotate(45deg);
-    
-
-    
-    
-    // -o-transform: rotate(45deg);
-  // }
 }

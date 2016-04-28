@@ -31,6 +31,7 @@ function plotTreemap(){
                   .text(function(d) { return d.children ? null : d.name; })
                   .on('click', function(d){ 
                     updateBarChart(getDataForBarChart(d)); 
+                    getTimeSeriesData(d);
                     $('#selectedRepoTitle').text("Bar Chart: " + d.name)
                   })
                   .on('mouseover', function(d){
@@ -127,4 +128,16 @@ function getDataForBarChart(d){
     count: d.PushEvent
   }]
   return data
+}
+
+
+function getTimeSeriesData(repo){
+  $.ajax({
+    dataType: 'json',
+    async: false,
+    url: 'data/wdata.json',
+    success: function(data){
+      updateTimeSeries(data[repo.name]);
+    }
+  })
 }

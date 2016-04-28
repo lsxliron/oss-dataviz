@@ -1,0 +1,22 @@
+[
+  {"name": "Commits", "date": "May 1", "count": 632},
+  {"name": "Commits", "date": "May 6", "count": 807},
+  {"name": "Commits", "date": "May 13", "count": 718},
+  {"name": "Commits", "date": "May 20", "count": 611},
+  {"name": "Commits", "date": "May 27", "count": 413},
+  {"name": "Pull Requests", "date": "May 1", "count": 477},
+  {"name": "Pull Requests", "date": "May 6", "count": 571},
+  {"name": "Pull Requests", "date": "May 13", "count": 561},
+  {"name": "Pull Requests", "date": "May 20", "count": 517},
+  {"name": "Pull Requests", "date": "May 27", "count": 292},
+  {"name": "Pull Request Comments", "date": "May 1", "count": 274},
+  {"name": "Pull Request Comments", "date": "May 6", "count": 385},
+  {"name": "Pull Request Comments", "date": "May 13", "count": 358},
+  {"name": "Pull Request Comments", "date": "May 20", "count": 420},
+  {"name": "Pull Request Comments", "date": "May 27", "count": 277},
+  {"name": "Issues", "date": "May 1", "count": 498},
+  {"name": "Issues", "date": "May 6", "count": 539},
+  {"name": "Issues", "date": "May 13", "count": 879},
+  {"name": "Issues", "date": "May 20", "count": 654},
+  {"name": "Issues", "date": "May 27", "count": 397}
+]
