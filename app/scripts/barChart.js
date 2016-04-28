@@ -1,26 +1,21 @@
 function plotBarChart(repoData){
 
-
-  
-  
   var dataFile = 'data/fbTotal.json';
   
-  
-
   d3.json(dataFile, function(err, data) {
 
     var max = d3.max(data, function(d) { return d.count });
     var min = d3.min(data, function(d) { return d.count });
 
-    var categories= ['', 'CommitCommentEvent', 'ForkEvent', 'WatchEvent', 'PullRequestEvent', 'PullRequestReviewCommentEvent', 'IssuesEvent', 'IssueCommentEvent',  'PushEvent'];
+    var categories= ['', 'Commit Comments', 'Forks', 'Stars', 'Pull Requests', 'Pull Requests Comments', 'Issues', 'Issue Commen',  'Commits'];
     
     var xscale = d3.scale.linear()
             .domain([min, max])
-            .range([50, $(window).width()/5]);
+            .range([50, $(window).width()/4]);
 
     var yscale = d3.scale.linear()
             .domain([0,categories.length])
-            .range([0,240]);
+            .range([0,290]);
 
     var canvas = d3.select('.barChartDiv')
             .append('svg')
@@ -46,7 +41,7 @@ function plotBarChart(repoData){
               .enter()
               .append('rect')
               .attr('height',19)
-              .attr({'x':0,'y':function(d,i){ return yscale(i) + 15; }})
+              .attr({'x':0,'y':function(d,i){ return yscale(i) + 22; }})
               .attr('width',function(d){ return 0; })
               .style('fill', '#52B6AC')
 
@@ -65,7 +60,7 @@ function plotBarChart(repoData){
               .attr({'x':function(d) {
                 var numStr = d.count.toString().length
                 return xscale(d.count)-10*numStr-10; 
-              },'y':function(d,i){ return yscale(i) + 30; }})
+              },'y':function(d,i){ return yscale(i) + 37; }})
               .text(function(d) { return d.count })
               .style({'fill':'#fff','font-size':'16px'});
   });
@@ -74,7 +69,7 @@ function plotBarChart(repoData){
 
 function updateBarChart(data){
   
-  var categories= ['', 'CommitCommentEvent', 'ForkEvent', 'WatchEvent', 'PullRequestEvent', 'PullRequestReviewCommentEvent', 'IssuesEvent', 'IssueCommentEvent',  'PushEvent'];
+  var categories= ['', 'Commit Comments', 'Forks', 'Stars', 'Pull Requests', 'Pull Requests Comments', 'Issues', 'Issue Commen',  'Commits'];
   
   var max = d3.max(data, function(d) { return d.count });
   var min = d3.min(data, function(d) { return d.count });
@@ -82,17 +77,17 @@ function updateBarChart(data){
   
   var xscale = d3.scale.linear()
             .domain([min, max])
-            .range([50, $(window).width()/5]);
+            .range([50, $(window).width()/4]);
 
   var yscale = d3.scale.linear()
             .domain([0,categories.length])
-            .range([0,240]);
+            .range([0,290]);
 
   var canvas = d3.select('.barChartDiv').select('svg')
   
   var chart = canvas.selectAll('rect').data(data)
                     .attr('height',19)
-                    .attr({'x':0,'y':function(d,i){ return yscale(i) + 15; }})
+                    .attr({'x':0,'y':function(d,i){ return yscale(i) + 22; }})
                     .transition().duration(1000)
                     .attr('width',function(d){ return xscale(d.count); })
                     
@@ -105,7 +100,7 @@ function updateBarChart(data){
                     .attr({'x':function(d) {
                       var numStr = d.count.toString().length
                       return xscale(d.count)-10*numStr-10; 
-                    },'y':function(d,i){ return yscale(i) + 30; }})
+                    },'y':function(d,i){ return yscale(i) + 37; }})
                     
   
 
