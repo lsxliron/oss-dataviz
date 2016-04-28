@@ -1,5 +1,5 @@
-#xaxis text, #yaxis text {
-  font-size: 10px; }
+.barChartDiv #xaxis text, .barChartDiv #yaxis text {
+  font-size: 12px; }
 
 #bars rect {
   font: 10px sans-serif;

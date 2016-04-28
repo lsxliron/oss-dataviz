@@ -1,5 +1,7 @@
-#xaxis text, #yaxis text {
-  font-size: 10px;
+.barChartDiv{
+  &>#xaxis text, &>#yaxis text {
+    font-size: 12px;
+  }
 }
 
 #bars rect {

@@ -175,6 +175,44 @@ def organizeRepoLanguages():
         json.dump(result, f)
 
 
+def getTimeSeriesData():
+    """
+    Constructs a json file with weekly data for the following events:
+    PushEvent, PullRequestEvent, PullRequestReviewCommentEvent, IssuesEvent.
+    """
+    tempData = dict()
+    final = dict()
+    offset = 0
+    days = [6,13,20,27]
+
+    for i in range(1,32):
+        data = json.load(open('fb{}.json'.format(i), 'r'))
+        for k in data.keys():
+            if not tempData.has_key(k):
+                tempData[k] = [0]*20
+            
+            tempData[k][0+offset] += data[k]['PushEvent']
+            tempData[k][1+offset] += data[k]['PullRequestEvent']
+            tempData[k][2+offset] += data[k]['PullRequestReviewCommentEvent']
+            tempData[k][3+offset] += data[k]['IssuesEvent']
+
+        if i in days:
+            offset += 4
+    
+    dates = [1, 6, 13, 20, 27]
+    for k in tempData.keys():
+        repoData = list()
+        for i in range(0,5):
+            repoData.append({"name":"Commits", "date": "May {}".format(dates[i]), "count":tempData[k][0+4*i]})
+            repoData.append({"name":"Pull Requests", "date": "May {}".format(dates[i]), "count":tempData[k][1+4*i]})
+            repoData.append({"name":"Pull Requests Comments", "date": "May {}".format(dates[i]), "count":tempData[k][2+4*i]})
+            repoData.append({"name":"Issues", "date": "May {}".format(dates[i]), "count":tempData[k][3+4*i]})
+            
+
+        final[k[9:]] = repoData
+
+    json.dump(final, open('qdata.json','w'))
+
 
 def main():
     # Uncomment the action to perform
@@ -182,6 +220,7 @@ def main():
     # sumData("T")
     # organizeRepoLanguages()
     # generateTreemapData(getTreemapData())
+    # getTimeSeriesData()
     return
 
 
