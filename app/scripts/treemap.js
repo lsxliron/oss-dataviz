@@ -135,7 +135,7 @@ function getTimeSeriesData(repo){
   $.ajax({
     dataType: 'json',
     async: false,
-    url: 'data/wdata.json',
+    url: 'data/'+$("#selectedMonth").val()+'/wdata.json',
     success: function(data){
       updateTimeSeries(data[repo.name]);
     }

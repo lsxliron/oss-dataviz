@@ -34,7 +34,7 @@ var months
 
 
 function init(){
-  months={March: 3,April: 4}
+  months={'February': 2, March: 3,April: 4}
   
   plotTreemap($("#selectedMonth").val())
   plotBarChart($("#selectedMonth").val())
@@ -43,7 +43,7 @@ function init(){
 function getTimeSeriesTotal(){
   $.ajax({
     dataType: 'json',
-    url: 'data/weekly.json',
+    url: 'data/'+$("#selectedMonth").val()+'/weekly.json',
     success: function(data){
       updateTimeSeries(data);
     }
@@ -53,7 +53,7 @@ function getTimeSeriesTotal(){
 function getFBTotal(){
   $.ajax({
     dataType: "json",
-    url: "data/fbTotal.json",
+    url: "data/"+$("#selectedMonth").val()+"/fbTotal.json",
     success: function(data){
       updateBarChart(data)
       $('#selectedRepoTitle').text('Bar Chart: All Reporistories');
