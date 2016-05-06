@@ -2,7 +2,7 @@ var margin = {top: 25, right: 30, bottom: 90, left: 50},
       width = $(window).width()/2.5  - margin.left - margin.right,
       height = 350 - margin.top - margin.bottom;  
 
-function plotTimeSeries(){
+function plotTimeSeries(month){
   // var margin = {top: 25, right: 30, bottom: 90, left: 50}, 
   //     width = $(window).width()/2.5  - margin.left - margin.right,
   //     height = 350 - margin.top - margin.bottom;  
@@ -53,7 +53,7 @@ function plotTimeSeries(){
                 'translate(' + margin.left + ',' + margin.top + ')');
 
   // Load our dataset
-  d3.json('data/weekly.json', function(err, data) {
+  d3.json('data/' + month + '/weekly.json', function(err, data) {
     
     // Parse the dates and counts
     data.forEach(function(d) {

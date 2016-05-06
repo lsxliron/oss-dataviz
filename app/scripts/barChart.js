@@ -1,6 +1,6 @@
-function plotBarChart(repoData){
+function plotBarChart(month){
 
-  var dataFile = 'data/fbTotal.json';
+  var dataFile = 'data/' + month + '/fbTotal.json';
   
   d3.json(dataFile, function(err, data) {
 

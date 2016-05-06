@@ -1,4 +1,4 @@
-function plotTreemap(){
+function plotTreemap(month){
 
   var margin = {top: -20, right: 40, bottom: 10, left: 10},
     width = $(window).width() - margin.left - margin.right,
@@ -19,7 +19,7 @@ function plotTreemap(){
               .style("top", margin.top + "px");
 
 
-  d3.json("data/treemapData.json", function(error, root){
+  d3.json("data/" + month + "/treemapData.json", function(error, root){
     if (error) throw error;
 
     var node = div.datum(root).selectAll(".node")

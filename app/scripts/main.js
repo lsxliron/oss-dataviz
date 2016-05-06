@@ -1,9 +1,11 @@
 var angle;
+var months
 
 (function(){
-  plotTreemap()
-  plotBarChart()  
-  plotTimeSeries()
+  
+  $(".dropdown-button").dropdown();
+
+  init()
 
   $('#refresh').on('click', function(){
     var angleMatrix = $('#loopIcon').css('transform');
@@ -15,8 +17,29 @@ var angle;
     getFBTotal();
     getTimeSeriesTotal();
   })
+
+
+  $(".month").on('click', function(event){
+    d3.selectAll('.treemapDiv').selectAll('.node').remove()
+    d3.selectAll('svg').remove()
+    $('#selectedMonth').val((months[$(this).text()])) 
+    $('#navDropdown').text(($(this).text()))  
+    init()
+    event.preventDefault()
+    
+  })
+
+
 })()
 
+
+function init(){
+  months={March: 3,April: 4}
+  
+  plotTreemap($("#selectedMonth").val())
+  plotBarChart($("#selectedMonth").val())
+  plotTimeSeries($("#selectedMonth").val())
+}
 function getTimeSeriesTotal(){
   $.ajax({
     dataType: 'json',

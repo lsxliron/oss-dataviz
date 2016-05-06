@@ -15,12 +15,25 @@
 </head>
 
 <body>
+<input type="hidden" id="selectedMonth" value="3" />
+
+
+<ul id="monthDropdown" class="dropdown-content">
+  <li><a class="month" href="#!">March</a></li>
+  <li><a class="month" href="#!">April</a></li>
+  <!-- <li class="divider"></li> -->
+  <!-- <li><a href="#!">three</a></li> -->
+</ul>
 
 <!-- NAVBAR -->
 <nav>
   <div class="nav-wrapper">
     <a  id="selectedRepoTitle" href="#">Bar Chart: All Reporistories</a>
     <a href="#" class="brand-logo right" style="margin-right:20px">Facebook Digest</a>
+    <ul class="left hide-on-med-and-down">
+      <li><a id="navDropdown" class="dropdown-button" href="#!" data-activates="monthDropdown">Month<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+    </ul>
   </div>
 </nav>
 <!-- END NAVBAR -->
