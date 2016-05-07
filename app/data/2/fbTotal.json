@@ -1,1 +1,8 @@
-[{"count": 1447, "name": "PullRequestReviewCommentEvent"}, {"count": 2663, "name": "ForkEvent"}, {"count": 1995, "name": "PullRequestEvent"}, {"count": 10715, "name": "IssueCommentEvent"}, {"count": 2907, "name": "PushEvent"}, {"count": 194, "name": "CommitCommentEvent"}, {"count": 15381, "name": "WatchEvent"}, {"count": 2195, "name": "IssuesEvent"}]
+[{"count": 194, "name": "CommitCommentEvent"}, 
+{"count": 2663, "name": "ForkEvent"}, 
+{"count": 15381, "name": "WatchEvent"}, 
+{"count": 1995, "name": "PullRequestEvent"},
+{"count": 1447, "name": "PullRequestReviewCommentEvent"}, 
+{"count": 2195, "name": "IssuesEvent"},
+{"count": 10715, "name": "IssueCommentEvent"}, 
+{"count": 2907, "name": "PushEvent"}]
