@@ -33,7 +33,9 @@ def sumFBTotal(filename, start, end):
 
 
 def sumTreemap(filename, start, end):
-
+    """
+        Create a file that summarize all the treemapData files
+    """
     final = json.load(open("{}/{}".format(start, filename), 'r'))
     for i in range(start+1, end+1):
         temp = json.load(open("{}/{}".format(i, filename), 'r'))
@@ -62,18 +64,23 @@ def sumTreemap(filename, start, end):
         json.dump(final, f)
 
 
-def getKeys():
+def _getKeys():
     return {"Commits": [0]*5,
             "Pull Requests": [0]*5,
             "Pull Request Comments": [0]*5,
             "Issues":[0]*5}
 
+
+
 def sumWeekly(filename, start, end):
+    """
+        Create a file that summarize all the weekly files
+    """
     r = re.compile(r'(\d+)')
     days = [1, 6, 13, 20, 27]
     final = list()
 
-    keys = getKeys()
+    keys = _getKeys()
 
     # ipdb.set_trace()
     for i in range(start, end+1):
@@ -96,6 +103,9 @@ def sumWeekly(filename, start, end):
 
 
 def sumWdata(filename, start, end):
+    """
+        Create a file that summarize all the wdata files
+    """
     r = re.compile(r'(\d+)')
     days = [1, 6, 13, 20, 27]
     temp = dict()
@@ -106,7 +116,7 @@ def sumWdata(filename, start, end):
         
         for k in  data.keys():
             if not temp.has_key(k):
-                temp[k] = getKeys()
+                temp[k] = _getKeys()
 
             for item in data[k]:
                 day = re.search(r, item['date']).group()
@@ -125,17 +135,9 @@ def sumWdata(filename, start, end):
 
                 
 
-
-
-
-
-
-
-
-
 def main():
-    # sumFBTotal('fbTotal.json', 2, 4)
-    # sumTreemap('treemapData.json', 2, 4)
+    sumFBTotal('fbTotal.json', 2, 4)
+    sumTreemap('treemapData.json', 2, 4)
     sumWeekly('weekly.json', 2, 4)
     sumWdata('wdata.json', 2, 4)
 

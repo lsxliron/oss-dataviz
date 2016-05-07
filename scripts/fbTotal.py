@@ -41,7 +41,7 @@ def sumData(mode):
     """
     events = initEvents()
     qCounter = 1
-    for i in range(1,32):
+    for i in range(1,30):
         filename = "fb{}.json".format(i)
 
         with open(filename, 'r') as f:
@@ -82,7 +82,7 @@ def getTreemapData():
         events[repo] = initEvents()
 
 
-    for i in range(1, 32):
+    for i in range(1, 30):
         with open("fb{}.json".format(i), 'r') as f:
             data = json.load(f)
 
@@ -131,7 +131,7 @@ def generateTreemapData(events):
             The events to organize as a treemap data.
             Preferably, this parameters should be the return value of getTreemapData() function.
     """
-    ipdb.set_trace()
+    # ipdb.set_trace()
     result = dict()
     result['name'] = 'repos'
     result['children'] = []
@@ -175,6 +175,7 @@ def organizeRepoLanguages():
         json.dump(result, f)
 
 
+
 def getTimeSeriesData():
     """
     Constructs a json file with weekly data for the following events:
@@ -185,7 +186,7 @@ def getTimeSeriesData():
     offset = 0
     days = [6,13,20,27]
 
-    for i in range(1,32):
+    for i in range(1,30):
         data = json.load(open('fb{}.json'.format(i), 'r'))
         for k in data.keys():
             if not tempData.has_key(k):
@@ -205,7 +206,7 @@ def getTimeSeriesData():
         for i in range(0,5):
             repoData.append({"name":"Commits", "date": "May {}".format(dates[i]), "count":tempData[k][0+4*i]})
             repoData.append({"name":"Pull Requests", "date": "May {}".format(dates[i]), "count":tempData[k][1+4*i]})
-            repoData.append({"name":"Pull Requests Comments", "date": "May {}".format(dates[i]), "count":tempData[k][2+4*i]})
+            repoData.append({"name":"Pull Request Comments", "date": "May {}".format(dates[i]), "count":tempData[k][2+4*i]})
             repoData.append({"name":"Issues", "date": "May {}".format(dates[i]), "count":tempData[k][3+4*i]})
             
 
@@ -213,14 +214,73 @@ def getTimeSeriesData():
 
     json.dump(final, open('qdata.json','w'))
 
+            
+            
+
+def getEvents():
+    return {'PullRequestReviewCommentEvent': 0,
+              'PullRequestEvent': 0,
+              'PushEvent': 0,
+              'IssuesEvent': 0}
+
+
+
+def createWeeklyData():
+    """
+        Create a file with a weekly data for each repository
+    """
+    month = "Feb"
+    final = []
+    dates = [1, 6, 13, 20, 27]
+    
+    
+    temp = getEvents()
+    for i in range(1, 30):
+        
+        data = json.load(open('fb{}.json'.format(i), 'r'))
+
+        for items in data.values():
+            for k in temp.keys():
+                temp[k] += items[k]
+
+        if i in dates:
+            date = "{} {}".format(month, i)
+            week =  [{"name": "Commits", "date": date, "count": temp['PushEvent']},
+                     {"name": "Pull Requests", "date": date, "count": temp['PullRequestEvent']},
+                     {"name": "Pull Request Comments", "date": date, "count": temp['PullRequestReviewCommentEvent']},
+                     {"name": "Issues", "date": date, "count": temp['IssuesEvent']}]
+
+            final.extend(week)
+            temp = getEvents()
+
+    with open('weekly.json','w') as f:
+        json.dump(final, f)
+
+
+
+def createTotalData():
+    """
+        Creates a file which sums all the events
+    """
+    final = list()
+    data = json.load(open('facebookTotal.json','r'))
+    for k,v in data.iteritems():
+        final.append({"name": k, "count": v})
+
+    with open('fbTotal.json', 'w') as f:
+        json.dump(final, f)
+
+
 
 def main():
     # Uncomment the action to perform
-    # sumData("Q")
-    # sumData("T")
-    # organizeRepoLanguages()
-    # generateTreemapData(getTreemapData())
-    # getTimeSeriesData()
+    sumData("Q")
+    sumData("T")
+    organizeRepoLanguages()
+    generateTreemapData(getTreemapData())
+    getTimeSeriesData()
+    createWeeklyData()
+    createTotalData()
     return
 
 

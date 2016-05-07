@@ -25,8 +25,11 @@ function plotTimeSeries(month){
   }
 
   // Parse the date / time
-  var parseDate = d3.time.format('%b %d').parse; 
-
+  if (month != "0")
+    var parseDate = d3.time.format('%b %d').parse; 
+  else
+    var parseDate = d3.time.format('%j').parse; 
+  
   // Set the ranges
   var x = d3.time.scale().range([0, width]);
   var y = d3.scale.linear().range([height, 0]);
@@ -56,13 +59,17 @@ function plotTimeSeries(month){
   d3.json('data/' + month + '/weekly.json', function(err, data) {
     
     // Parse the dates and counts
+    k=0
     data.forEach(function(d) {
+        
         d.date = parseDate(d.date);
         d.count = d.count;
     });
+    // console.log(data)
 
     // Scale dates and count values
     x.domain(d3.extent(data, function(d) { return d.date; }));
+    console.log(x.domain())
     y.domain([0, d3.max(data, function(d) { return d.count; })]); 
 
     // Used to group objects by keys
@@ -72,7 +79,6 @@ function plotTimeSeries(month){
 
     // For each array of keys (commits, stars, etc), create a line
     dataNest.forEach(function(d) {
-      console.log(d.values)
       svg.append('path')
         .attr('class', 'line')
         .attr('stroke', color_hash[dataNest.indexOf(d)])
@@ -156,8 +162,12 @@ function plotTimeSeries(month){
 function updateTimeSeries(data){
 
   // Parse the date / time
-  var parseDate = d3.time.format('%b %d').parse; 
-
+  // var parseDate = d3.time.format('%b %d').parse; 
+  if (data[0].date.length>2)
+    var parseDate = d3.time.format('%b %d').parse; 
+  else
+    var parseDate = d3.time.format('%j').parse; 
+  
   // Set the ranges
   var x = d3.time.scale().range([0, width]);
   var y = d3.scale.linear().range([height, 0]);
@@ -182,7 +192,9 @@ function updateTimeSeries(data){
 
   // Parse the dates and counts
   data.forEach(function(d) {
-      d.date = parseDate(d.date);
+      
+      d.date = parseDate(d.date);  
+      console.log(d)
       d.count = d.count;
   });
 
@@ -190,14 +202,7 @@ function updateTimeSeries(data){
   x.domain(d3.extent(data, function(d) { return d.date; }));
   y.domain([0, d3.max(data, function(d) { return d.count+5; })]);
   
-  // console.log(y.domain()[1])
-  // if (y.domain()[1] == 1){
-  //   console.log("X")
-  //   y.domain([0,1])
-  // }
-  
-  
-
+    
   // For each array of keys (commits, stars, etc), create a line
   svg.selectAll('.line')
      .data(dataNest)
