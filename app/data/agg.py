@@ -136,10 +136,10 @@ def sumWdata(filename, start, end):
                 
 
 def main():
-    sumFBTotal('fbTotal.json', 2, 4)
-    sumTreemap('treemapData.json', 2, 4)
-    sumWeekly('weekly.json', 2, 4)
-    sumWdata('wdata.json', 2, 4)
+    sumFBTotal('fbTotal.json', 1, 4)
+    sumTreemap('treemapData.json', 1, 4)
+    sumWeekly('weekly.json', 1, 4)
+    sumWdata('wdata.json', 1, 4)
 
     
 
