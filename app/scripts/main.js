@@ -37,7 +37,6 @@ $(document).ready(function(){
   setTimeout(function(){
     if ($('#selectedMonth').val() == '0'){
       var ticks = d3.selectAll('.x.axis').selectAll('.tick').selectAll('text')
-      console.log(ticks)
       $.each(ticks, function(i, d){
         $(d).text($(d).text().slice(4));
       })
@@ -52,7 +51,6 @@ function init(){
   plotTreemap($("#selectedMonth").val())
   plotBarChart($("#selectedMonth").val())
   plotTimeSeries($("#selectedMonth").val())
-  console.log(typeof($('#selectedMonth').val()))
 }
 function getTimeSeriesTotal(){
   $.ajax({
