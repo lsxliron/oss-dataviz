@@ -34,7 +34,7 @@ var months
 
 
 function init(){
-  months={Total: 0, 'February': 2, March: 3,April: 4}
+  months={Total: 0, 'January': 1, 'February': 2, March: 3,April: 4}
   
   plotTreemap($("#selectedMonth").val())
   plotBarChart($("#selectedMonth").val())
