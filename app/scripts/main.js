@@ -32,9 +32,21 @@ var months
 
 })()
 
+//Hack to remove months from tick labels when user chose total
+$(document).ready(function(){
+  setTimeout(function(){
+    if ($('#selectedMonth').val() == '0'){
+      var ticks = d3.selectAll('.x.axis').selectAll('.tick').selectAll('text')
+      $.each(ticks, function(i, d){
+        $(d).text($(d).text().slice(4));
+      })
+    }
+  },1)
+})
+
 
 function init(){
-  months={Total: 0, 'January': 1, 'February': 2, March: 3,April: 4}
+  months={'Total': 0, 'January': 1, 'February': 2, 'March': 3, 'April': 4}
   
   plotTreemap($("#selectedMonth").val())
   plotBarChart($("#selectedMonth").val())

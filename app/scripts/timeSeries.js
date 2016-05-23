@@ -65,11 +65,10 @@ function plotTimeSeries(month){
         d.date = parseDate(d.date);
         d.count = d.count;
     });
-    // console.log(data)
+    
 
     // Scale dates and count values
     x.domain(d3.extent(data, function(d) { return d.date; }));
-    console.log(x.domain())
     y.domain([0, d3.max(data, function(d) { return d.count; })]); 
 
     // Used to group objects by keys
@@ -194,7 +193,6 @@ function updateTimeSeries(data){
   data.forEach(function(d) {
       
       d.date = parseDate(d.date);  
-      console.log(d)
       d.count = d.count;
   });
 
