@@ -1,11 +1,22 @@
+"""
+This module summarizes the data from all the months into an aggragate data file
+"""
 import json, re
-import ipdb
-
 
 
 def sumFBTotal(filename, start, end):
     """
         Create a file that summarize the fbTotal files.
+        
+        Parameters:
+        -----------
+            filename: str
+                the output filename
+            start: int
+                The first month of the um
+            end:
+                The last month of the sum
+
     """
     result = list()
     events = {"CommitCommentEvent": 0,
@@ -35,6 +46,15 @@ def sumFBTotal(filename, start, end):
 def sumTreemap(filename, start, end):
     """
         Create a file that summarize all the treemapData files
+
+        Parameters:
+        -----------
+            filename: str
+                the output filename
+            start: int
+                The first month of the um
+            end:
+                The last month of the sum
     """
     final = json.load(open("{}/{}".format(start, filename), 'r'))
     for i in range(start+1, end+1):
@@ -65,6 +85,13 @@ def sumTreemap(filename, start, end):
 
 
 def _getKeys():
+    """
+        Creates a dictionary of keys for the weekly summary.
+
+        Return
+        ------
+            dict
+    """
     return {"Commits": [0]*5,
             "Pull Requests": [0]*5,
             "Pull Request Comments": [0]*5,
@@ -75,6 +102,15 @@ def _getKeys():
 def sumWeekly(filename, start, end):
     """
         Create a file that summarize all the weekly files
+
+        Parameters:
+        -----------
+            filename: str
+                the output filename
+            start: int
+                The first month of the um
+            end:
+                The last month of the sum
     """
     r = re.compile(r'(\d+)')
     days = [1, 6, 13, 20, 27]
@@ -82,7 +118,6 @@ def sumWeekly(filename, start, end):
 
     keys = _getKeys()
 
-    # ipdb.set_trace()
     for i in range(start, end+1):
         data = json.load(open('{}/weekly.json'.format(i), 'r'))
         for item in data:
@@ -105,6 +140,15 @@ def sumWeekly(filename, start, end):
 def sumWdata(filename, start, end):
     """
         Create a file that summarize all the wdata files
+
+        Parameters:
+        -----------
+            filename: str
+                the output filename
+            start: int
+                The first month of the um
+            end:
+                The last month of the sum
     """
     r = re.compile(r'(\d+)')
     days = [1, 6, 13, 20, 27]
