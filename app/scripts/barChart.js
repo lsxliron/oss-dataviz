@@ -1,14 +1,15 @@
-function plotBarChart(repoData){
+function plotBarChart(month){
 
-  var dataFile = 'data/fbTotal.json';
+  var dataFile = 'data/' + month + '/fbTotal.json';
   
   d3.json(dataFile, function(err, data) {
 
     var max = d3.max(data, function(d) { return d.count });
     var min = d3.min(data, function(d) { return d.count });
 
-    var categories= ['', 'Commit Comments', 'Forks', 'Stars', 'Pull Requests', 'Pull Request Comments', 'Issues', 'Issue Comments',  'Commits'];
-    
+
+    var categories= ['', 'Commit Comments', 'Forks', 'Stars', 'Pull Requests', 'Pull Requests Comments', 'Issues', 'Issue Comment',  'Commits'];
+
     var xscale = d3.scale.linear()
             .domain([min, max])
             .range([50, $(window).width()/4]);
@@ -69,7 +70,8 @@ function plotBarChart(repoData){
 
 function updateBarChart(data){
   
-  var categories= ['', 'Commit Comments', 'Forks', 'Stars', 'Pull Requests', 'Pull Request Comments', 'Issues', 'Issue Comments',  'Commits'];
+
+  var categories= ['', 'Commit Comments', 'Forks', 'Stars', 'Pull Requests', 'Pull Requests Comments', 'Issues', 'Issue Comment',  'Commits'];
   
   var max = d3.max(data, function(d) { return d.count });
   var min = d3.min(data, function(d) { return d.count });

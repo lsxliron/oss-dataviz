@@ -9,7 +9,7 @@ module.exports = {
           // If you don't want to get rate-limited, uncomment the following line
           // And add your Github username and password.
           // NOTE: Don't push to the repository with this data!
-          // 'auth': {'user': 'your-github-username', 'pass': 'your-github-password'}
+          'auth': {'user': 'DrkSephy', 'pass': 'Sephiroth1025'}
         },
       (error, response, body) => {
         if (body) {
