@@ -6,7 +6,7 @@ Final project for Data Visualization at the CUNY Graduate Center.
 
 Install the dependencies:
 
-`sudo npm install`
+`bower install`
 
 In order to serve the files locally using d3, we'll need to run a webserver:
 
