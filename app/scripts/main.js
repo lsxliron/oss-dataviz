@@ -13,7 +13,8 @@ var timeSeries = require('./timeSeries');
 
   init()
 
-  $('#refresh').on('click', function(){
+  $('#refresh').on('click', function(e){
+    e.preventDefault();
     var angleMatrix = $('#loopIcon').css('transform');
     if (angleMatrix == 'none')
       angle = 360;
@@ -63,7 +64,7 @@ function getTimeSeriesTotal(){
     dataType: 'json',
     url: 'data/'+$("#selectedMonth").val()+'/weekly.json',
     success: function(data){
-      updateTimeSeries(data);
+      timeSeries.updateTimeSeries(data);
     }
   })
 }
@@ -73,7 +74,7 @@ function getFBTotal(){
     dataType: "json",
     url: "data/"+$("#selectedMonth").val()+"/fbTotal.json",
     success: function(data){
-      updateBarChart(data)
+      barchart.updateBarChart(data)
       $('#selectedRepoTitle').text('Bar Chart: All Reporistories');
     }
   })

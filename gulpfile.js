@@ -33,9 +33,9 @@ gulp.task('bundle', function(){
             .bundle()
             .pipe(source('bundle.min.js'))
             .pipe(buffer())
-            // .pipe(sourcemaps.init({loadMaps: true}))
+            .pipe(sourcemaps.init({loadMaps: true}))
             .pipe(streamify(uglify({mangle: false})))
-            // .pipe(sourcemaps.write('.'))
+            .pipe(sourcemaps.write('.'))
             .pipe(gulp.dest('./public/js'))
 })
 
