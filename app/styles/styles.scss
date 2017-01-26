@@ -1,0 +1,36 @@
+@import 'treemap';
+@import 'timeSeries';
+@import 'barChart';
+@import '../../node_modules/materialize-css/bin/materialize';
+.customContainer{
+  position:relative;
+  width: 98%;
+  padding-left: 1%;
+  padding-right: 1%;
+  margin-left:0px;
+  margin-right:0px;
+  position: auto;
+}
+
+.wrapper{
+  width:100%;
+}
+
+#selectedRepo{
+  font-size:15px; 
+  margin-left:300px;
+}
+
+#selectedRepoTitle{
+  font-size:20px;
+  margin-left:10px;
+}
+
+#refresh{
+  &:link{color:#000;}
+  &:visited{color:#000;}
+}
+
+a,a:visited{
+  color:#fff;
+}
